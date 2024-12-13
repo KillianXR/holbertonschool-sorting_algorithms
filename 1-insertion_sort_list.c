@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 /**
- * insertion_sort_list - sorts a doubly linked list of integers in ascending order using the Insertion sort algorithm
+ * insertion_sort_list - sorts a doubly linked list of integers in ascending,
+	* order using the Insertion sort algorithm
  * @list: list to be sorted
  */
 void insertion_sort_list(listint_t **list)
@@ -20,9 +21,9 @@ void insertion_sort_list(listint_t **list)
 		while (key->prev && key->n < key->prev->n)
 		{
 			tmp = key->prev;
-				if (tmp->prev)
+			if (tmp->prev)
 			tmp->prev->next = key;
-				if (key->next)
+			if (key->next)
 			key->next->prev = tmp;
 
 			tmp->next = key->next;
