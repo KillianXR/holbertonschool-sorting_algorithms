@@ -24,11 +24,12 @@ void selection_sort(int *array, size_t size)
             }
         }
 
-        if (smallest_index != current_index) /* Swap only if a smaller element is found */
+        /* Swap the smallest element found with the current index */
+        if (smallest_index != current_index)
         {
-            int temporary_value = array[smallest_index];
+            int temp = array[smallest_index];
             array[smallest_index] = array[current_index];
-            array[current_index] = temporary_value;
+            array[current_index] = temp;
 
             print_array(array, size); /* Print array after each swap */
         }
