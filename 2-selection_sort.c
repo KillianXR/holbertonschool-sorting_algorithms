@@ -1,29 +1,36 @@
 #include "sort.h"
+#include <stddef.h>
+
 /**
- * Selection sort algorithm for an array of integers.
- *
- * @array: Pointer to the array to sort.
+ * selection_sort - Sorts an array of integers in ascending order
+ * using the selection sort algorithm.
+ * @array: Pointer to the array to be sorted.
  * @size: Number of elements in the array.
  */
 void selection_sort(int *array, size_t size)
 {
-	if (array == NULL || size < 2) /*Validate input.*/
-	return;
-			for (int current_position = 0; current_position < (int)size - 1; current_position++)
-{
-			int smallest_index = current_position;
-			/*Tracks the smallest element's index.*/
-					for (int next = current_position + 1; next < (int)size; next++)
-{
-					if (*(array + next) < *(array + smallest_index))
-{
-					smallest_index = next;
-}
-}
-							/*Swap the values of the elements.*/
-							int temporary = *(array + smallest_index);
-							*(array + smallest_index) = *(array + current_position);
-							*(array + current_position) = temporary;
-								print_array(array, size); /*Print the array after each swap.*/
-}
+    if (array == NULL || size < 2) /* Validate input */
+        return;
+
+    for (size_t current_index = 0; current_index < size - 1; current_index++)
+    {
+        size_t smallest_index = current_index; /* Assume current index holds the smallest value */
+
+        for (size_t comparison_index = current_index; comparison_index < size; comparison_index++)
+        {
+            if (array[comparison_index] < array[smallest_index])
+            {
+                smallest_index = comparison_index; /* Update the index of the smallest value */
+            }
+        }
+
+        if (smallest_index != current_index) /* Swap only if a smaller element is found */
+        {
+            int temporary_value = array[smallest_index];
+            array[smallest_index] = array[current_index];
+            array[current_index] = temporary_value;
+
+            print_array(array, size); /* Print array after each swap */
+        }
+    }
 }
