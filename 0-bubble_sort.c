@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "sort.h"
 /**
 * bubble_sort - Sorts an array of integers using the Bubble Sort algorithm
