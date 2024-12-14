@@ -1,6 +1,4 @@
 #include "sort.h"
-#include <stddef.h>
-
 /**
  * selection_sort - Sorts an array of integers in ascending order
  * using the selection sort algorithm.
@@ -9,29 +7,34 @@
  */
 void selection_sort(int *array, size_t size)
 {
-    if (array == NULL || size < 2) /* Validate input */
+    size_t current_position, comparison_position, index_of_minimum;
+    int temporary_value;
+
+    /* Validate input */
+    if (array == NULL || size < 2)
         return;
 
-    for (size_t current_index = 0; current_index < size - 1; current_index++)
+    /* Traverse the array */
+    for (current_position = 0; current_position < size - 1; current_position++)
     {
-        size_t smallest_index = current_index; /* Assume current index holds the smallest value */
+        index_of_minimum = current_position;
 
-        for (size_t comparison_index = current_index + 1; comparison_index < size; comparison_index++)
+        /* Find the index of the smallest element */
+        for (comparison_position = current_position + 1; comparison_position < size; comparison_position++)
         {
-            if (array[comparison_index] < array[smallest_index])
-            {
-                smallest_index = comparison_index; /* Update the index of the smallest value */
-            }
+            if (array[comparison_position] < array[index_of_minimum])
+                index_of_minimum = comparison_position;
         }
 
-        /* Swap the smallest element found with the current index */
-        if (smallest_index != current_index)
+        /* Swap if a smaller element is found */
+        if (index_of_minimum != current_position)
         {
-            int temp = array[smallest_index];
-            array[smallest_index] = array[current_index];
-            array[current_index] = temp;
+            temporary_value = array[current_position];
+            array[current_position] = array[index_of_minimum];
+            array[index_of_minimum] = temporary_value;
 
-            print_array(array, size); /* Print array after each swap */
+            /* Print array after each swap */
+            print_array(array, size);
         }
     }
 }
